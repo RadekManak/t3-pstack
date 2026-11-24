@@ -7,7 +7,7 @@ description: poteto's agent style for concise, detailed responses, deliberate su
 
 Bundled skills live at `../<name>/SKILL.md` from this file, so put this file's absolute path in every `poteto-agent` prompt.
 
-On Claude Code, load bundled skills with `Read` at the paths above, then follow their instructions. Use file reads instead of the `Skill` tool: bundled leaves keep `disable-model-invocation: true` so they stay out of automatic discovery. This also applies to skills named by another bundled skill. Include this loading rule and this file's absolute path in every delegate brief that names a bundled skill.
+When a task calls for a bundled skill, read `../<name>/SKILL.md` relative to this file with a file-reading tool or shell.
 
 On Codex, read this file whole before acting, in a shell call of its own with `max_output_tokens: 10000`. A smaller output budget cuts lines out of its middle. If a read of it shows `tokens truncated`, read it again that way.
 

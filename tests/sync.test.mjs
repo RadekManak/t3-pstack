@@ -79,18 +79,6 @@ function underUmask(mask, body) {
 }
 
 describe("applySubstitutions", () => {
-  test("Claude file loading survives derivation at both routing boundaries", () => {
-    for (const file of ["SKILL.md", "worker.md"]) {
-      const rel = `skills/poteto-mode/${file}`;
-      const rule = RULES.substitutions.find((rule) => rule.files?.test(rel) && rule.replacement.includes("Use file reads instead of the `Skill` tool"));
-      expect(rule).toBeDefined();
-      const result = applySubstitutions(rule.match, RULES.substitutions, rel).text;
-      expect(result).toContain("On Claude Code");
-      expect(result).toContain("`Read`");
-      expect(readFileSync(join(import.meta.dir, "../plugins/pstack", rel), "utf8")).toContain(result);
-    }
-  });
-
   test("rewrites Cursor primitives and counts per rule", () => {
     const { text, counts } = applySubstitutions("Spawn it with `Task` and `run_in_background: true`.", RULES.substitutions);
     expect(text).toBe('Spawn it with `delegate_task` and `mode: "async"`.');

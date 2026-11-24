@@ -2,6 +2,10 @@
 
 This file is the release changelog, with one `## <version> - <title>` entry per release, newest first. The Cursor-to-T3 rewrite rules live in [`tools/substitutions.json`](tools/substitutions.json), and the [sync boundary](CONTRIBUTING.md#the-sync-boundary) in `CONTRIBUTING.md` defines how a change to upstream's skill content is declared.
 
+## 2.7.2-radek.2 - Read bundled skills when the task calls for them
+
+Use the reviewed provider-neutral file-loading instruction in poteto-mode and `worker.md`. Delegates receive it through their existing instruction files. Keep the invocation rejection explanation in substitution metadata and use the existing sync checks instead of a wording-based test.
+
 ## 2.7.2-radek.1 - Claude Code reads hidden bundled skills
 
 After an explicit poteto-mode invocation, Claude Code now loads routed skills by reading their bundled `SKILL.md` files. The router passes this rule to delegates, and `worker.md` repeats it at the worker boundary. Hidden leaves retain `disable-model-invocation: true`, preserving Lauren Tan's opt-in discovery model while avoiding rejected `Skill` calls. The loading rules live in `tools/substitutions.json` so upstream sync retains them.
