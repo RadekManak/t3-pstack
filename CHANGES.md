@@ -2,6 +2,10 @@
 
 This file is the release changelog, with one `## <version> - <title>` entry per release, newest first. The Cursor-to-T3 rewrite rules live in [`tools/substitutions.json`](tools/substitutions.json), and the [sync boundary](CONTRIBUTING.md#the-sync-boundary) in `CONTRIBUTING.md` defines how a change to upstream's skill content is declared.
 
+## 2.7.2-radek.1 - Claude Code reads hidden bundled skills
+
+After an explicit poteto-mode invocation, Claude Code now loads routed skills by reading their bundled `SKILL.md` files. The router passes this rule to delegates, and `worker.md` repeats it at the worker boundary. Hidden leaves retain `disable-model-invocation: true`, preserving Lauren Tan's opt-in discovery model while avoiding rejected `Skill` calls. The loading rules live in `tools/substitutions.json` so upstream sync retains them.
+
 ## 2.7.1 - /reframe lists the problems a vague description could be
 
 t3-pstack moves to Lauren Tan's pstack at cursor/plugins `9e278fe` ([pstack #1326](https://github.com/cursor/plugins/pull/1326)) for all three components, and pstack's version moves from 0.15.47 to 0.15.48. Only pstack changed upstream. cursor-team-kit and thermos have no change between `2dd5c0c` and `9e278fe`, and their pins move with pstack's.
